@@ -1,0 +1,26 @@
+[
+  {
+    "id": "bb488a75-fe81-44c6-894a-45c5ca99277f",
+    "name": "ผู้ดูแลระบบ",
+    "type": "ADMIN",
+    "description": null
+  },
+  {
+    "id": "bdd71bf6-a422-41fe-a208-b3c1a1ca5c5b",
+    "name": "คณบดี",
+    "type": "PERSONNEL",
+    "description": null
+  },
+  {
+    "id": "d947f227-f870-4200-a08c-aca75b7f3f63",
+    "name": "หัวหน้าสาขา",
+    "type": "PERSONNEL",
+    "description": null
+  },
+  {
+    "id": "e5555555-5555-5555-5555-555555555555",
+    "name": "นักศึกษา",
+    "type": "STUDENT",
+    "description": null
+  }
+]

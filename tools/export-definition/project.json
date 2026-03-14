@@ -1,0 +1,36 @@
+{
+  "name": "export-definition",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/export-definition/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/tools/export-definition",
+        "main": "tools/export-definition/src/index.ts",
+        "tsConfig": "tools/export-definition/tsconfig.lib.json",
+        "assets": [
+          "tools/export-definition/*.md",
+          {
+            "input": "./tools/export-definition/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./tools/export-definition/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./tools/export-definition",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    }
+  }
+}

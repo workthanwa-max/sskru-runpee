@@ -1,0 +1,11 @@
+import { TYPES as G_TYPES, ICommandHandler } from '@sskru/core';
+import { interfaces } from 'inversify';
+import { CreateStudentCommand } from './student/definitions/create';
+import { UpdateStudentCommand } from './student/definitions/update';
+import { CreateStudentCommandHandler } from './student/handlers/create.handler';
+import { UpdateStudentCommandHandler } from './student/handlers/update.handler';
+
+export const configures = (bind: interfaces.Bind) => {
+  bind<ICommandHandler<CreateStudentCommand>>(G_TYPES.CommandHandler).to(CreateStudentCommandHandler);
+  bind<ICommandHandler<UpdateStudentCommand>>(G_TYPES.CommandHandler).to(UpdateStudentCommandHandler);
+};

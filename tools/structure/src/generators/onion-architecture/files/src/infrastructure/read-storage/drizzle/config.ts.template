@@ -1,0 +1,13 @@
+import { defineConfig } from 'drizzle-kit';
+import { envs } from '../../../configs/env';
+export const DB_URL = `postgresql://${envs.DB_USERNAME}:${envs.DB_PASSWORD}@${envs.DB_HOST}:${envs.DB_PORT}/'<%= name %>'${envs.DB_SSL_REQUIRED === '1' ? '?sslmode=require' : ''}`;
+export default defineConfig({
+  dialect: 'postgresql',
+  out: './src/infrastructure/read-storage/drizzle/migrations',
+  schema: './src/domain/entities/tables.ts',
+  dbCredentials: {
+    url: DB_URL,
+  },
+  verbose: true,
+  strict: true,
+});

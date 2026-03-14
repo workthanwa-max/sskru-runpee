@@ -1,0 +1,6 @@
+export { Config as DrizzleConfig } from 'drizzle-kit';
+import { LibSQLDatabase } from 'drizzle-orm/libsql';
+import * as schema from '../../../domain/entities/tables';
+import { dbClient } from './client';
+export type Database = LibSQLDatabase<typeof schema>;
+export type DBClientType = typeof dbClient;

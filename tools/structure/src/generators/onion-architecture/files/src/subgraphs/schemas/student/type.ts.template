@@ -1,0 +1,10 @@
+export const typeTypeDefs = `#graphql
+  type Student {
+    id: ID!
+    name: String!
+    url: String!
+    note: String
+    loginRequired: Boolean!
+    active: Boolean!
+  }
+`;

@@ -1,0 +1,15 @@
+import { date, pgTable, text, uuid, varchar } from 'drizzle-orm/pg-core';
+
+export const students = pgTable('students', {
+  id: uuid().primaryKey().defaultRandom(),
+  studentId: varchar({ length: 255 }).notNull().unique(),
+  personnelId: varchar({ length: 255 }).notNull().unique(),
+  title: varchar({ length: 255 }).notNull(),
+  firstname: varchar({ length: 255 }).notNull(),
+  lastname: varchar({ length: 255 }).notNull(),
+  firstnameEn: varchar({ length: 255 }).notNull(),
+  lastnameEn: varchar({ length: 255 }).notNull(),
+  course: varchar({ length: 255 }).notNull(),
+  degree: varchar({ length: 255 }),
+  graduationDate: date(),
+});

@@ -1,0 +1,4 @@
+export * from './commends/student/definitions/create';
+export * from './commends/student/definitions/update';
+export * from './queries/student/definitions/list';
+export * from './queries/student/definitions/response';

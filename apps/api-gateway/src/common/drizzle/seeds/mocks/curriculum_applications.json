@@ -1,0 +1,18 @@
+[
+  {
+    "id": "c0000000-0000-0000-0000-000000000001",
+    "minimumEnrollment": 30,
+    "courseFee": 25000,
+    "qualificationRequirements": ["จบ ม.6 แผนวิทย์-คณิต", "เกรดเฉลี่ยสะสม 2.50 ขึ้นไป"],
+    "additionalConditions": ["ผ่านการสัมภาษณ์ทางเทคนิค"],
+    "attachmentUrl": "uploads/curriculum/se-2567.pdf"
+  },
+  {
+    "id": "c0000000-0000-0000-0000-000000000002",
+    "minimumEnrollment": 40,
+    "courseFee": 20000,
+    "qualificationRequirements": ["จบ ม.6 ทุกแผนการเรียน", "มีความสนใจด้านเทคโนโลยี"],
+    "additionalConditions": [],
+    "attachmentUrl": null
+  }
+]

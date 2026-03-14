@@ -1,0 +1,26 @@
+import postgres from 'postgres';
+import { DB_URL } from '../config';
+
+async function main() {
+  try {
+    const databaseName = DB_URL.slice(DB_URL.lastIndexOf('/') + 1, DB_URL.length);
+    const url = `${DB_URL.replace(`/${databaseName}`, '')}/postgres`;
+    const sql = postgres(url);
+
+    const exists = await sql`SELECT 1 FROM pg_database WHERE datname = ${databaseName}`;
+    if (exists.length > 0) {
+      console.log(`Database "${databaseName}" already exists.`);
+    } else {
+      await sql`CREATE DATABASE ${sql(databaseName)}`;
+      console.log(`Database "${databaseName}" created successfully.`);
+    }
+
+    await sql.end();
+    process.exit(0);
+  } catch (error) {
+    console.error('Error creating database:', error);
+    process.exit(1);
+  }
+}
+
+main();

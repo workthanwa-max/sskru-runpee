@@ -1,0 +1,11 @@
+import { AsyncContainerModule, interfaces } from 'inversify';
+
+import { configures as commandConfigures } from './commends';
+import { configures as eventConfigures } from './events';
+import { configures as queryConfigures } from './queries';
+
+export const applicationModule = new AsyncContainerModule(async (bind: interfaces.Bind) => {
+  commandConfigures(bind);
+  eventConfigures(bind);
+  queryConfigures(bind);
+});

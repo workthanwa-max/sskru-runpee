@@ -1,0 +1,41 @@
+{
+  "name": "structure-generator",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/structure/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/tools/structure",
+        "main": "tools/structure/src/index.ts",
+        "tsConfig": "tools/structure/tsconfig.lib.json",
+        "assets": [
+          "tools/structure/*.md",
+          {
+            "input": "./tools/structure/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./tools/structure/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./tools/structure",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./tools/structure",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    }
+  }
+}

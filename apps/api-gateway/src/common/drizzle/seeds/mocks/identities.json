@@ -1,0 +1,30 @@
+[
+  {
+    "id": "feff64fc-0e91-4716-9805-d62278294135",
+    "username": "admin01",
+    "password": "password123",
+    "status": "active",
+    "systemUrls": ["management"]
+  },
+  {
+    "id": "9133754f-5dd1-4aec-ad8a-4562d4680c51",
+    "username": "submitter02",
+    "password": "password123",
+    "status": "active",
+    "systemUrls": ["curriculum/request"]
+  },
+  {
+    "id": "bb5f23de-1fb2-4710-bd29-21a499098914",
+    "username": "approver03",
+    "password": "password123",
+    "status": "active",
+    "systemUrls": ["curriculum/approve"]
+  },
+  {
+    "id": "d4444444-4444-4444-4444-444444444444",
+    "username": "student04",
+    "password": "password123",
+    "status": "active",
+    "systemUrls": ["admission"]
+  }
+]

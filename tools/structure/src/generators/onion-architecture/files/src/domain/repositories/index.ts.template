@@ -1,0 +1,4 @@
+import { IDrizzleRepository } from '@sskru/core';
+import { Student } from '../interfaces';
+
+export interface IStudentRepository extends IDrizzleRepository<Student> {}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "OnionArchitecture",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use?"
+    },
+    "supportUpload": {
+      "type": "boolean",
+      "description": "Enable or disable upload support.",
+      "default": true,
+      "x-prompt": "Do you want to enable upload support? (default: true)"
+    }
+  },
+  "required": ["name"]
+}

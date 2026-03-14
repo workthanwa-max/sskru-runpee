@@ -1,0 +1,6 @@
+import { inputTypeDefs } from './input';
+import { mutationTypeDefs } from './mutation';
+import { queryTypeDefs } from './query';
+import { typeTypeDefs } from './type';
+
+export const schemaTypeDefs = [queryTypeDefs, mutationTypeDefs, typeTypeDefs, inputTypeDefs];

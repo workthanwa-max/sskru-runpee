@@ -1,0 +1,34 @@
+[
+  {
+    "id": "c0000000-0000-0000-0000-000000000001",
+    "objectives": ["เพื่อผลิตวิศวกรซอฟต์แวร์ที่มีคุณภาพ", "เพื่อตอบสนองความต้องการของอุตสาหกรรม"],
+    "content": "หลักสูตรวิศวกรรมซอฟต์แวร์ เน้นการปฏิบัติจริง",
+    "requestedBy": "submitter02",
+    "status": "APPROVED",
+    "currentStep": "APPROVED"
+  },
+  {
+    "id": "c0000000-0000-0000-0000-000000000002",
+    "objectives": ["เพื่อพัฒนาทักษะด้านวิทยาการคอมพิวเตอร์"],
+    "content": "หลักสูตรวิทยาการคอมพิวเตอร์สมัยใหม่",
+    "requestedBy": "submitter02",
+    "status": "SUBMITTED",
+    "currentStep": "UNDER_CONSIDERATION"
+  },
+  {
+    "id": "c0000000-0000-0000-0000-000000000003",
+    "objectives": ["เพื่อเสริมสร้างทักษะการสอนระดับประถม"],
+    "content": "หลักสูตรครุศาสตร์ (ประถมศึกษา)",
+    "requestedBy": "P001",
+    "status": "IN_PROGRESS",
+    "currentStep": "ACADEMIC_COMMITTEE"
+  },
+  {
+    "id": "c0000000-0000-0000-0000-000000000004",
+    "objectives": ["พื้นฐานการบัญชีสำหรับธุรกิจขนาดกลาง"],
+    "content": "หลักสูตรระยะสั้น การบัญชีเบื้องต้น",
+    "requestedBy": "submitter02",
+    "status": "DRAFT",
+    "currentStep": null
+  }
+]

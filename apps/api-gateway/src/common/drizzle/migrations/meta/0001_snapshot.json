@@ -1,0 +1,1102 @@
+{
+  "id": "0935f45f-bcef-4eeb-9112-1ea7bde284d4",
+  "prevId": "d26b83ae-6ede-48b1-84f7-d5d54282e13b",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.identities": {
+      "name": "identities",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "username": {
+          "name": "username",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'active'"
+        },
+        "systemUrls": {
+          "name": "systemUrls",
+          "type": "varchar(255)[]",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'{}'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "identities_username_unique": {
+          "name": "identities_username_unique",
+          "nullsNotDistinct": false,
+          "columns": ["username"]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.identities_roles": {
+      "name": "identities_roles",
+      "schema": "",
+      "columns": {
+        "identityId": {
+          "name": "identityId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "roleId": {
+          "name": "roleId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "identities_roles_identityId_identities_id_fk": {
+          "name": "identities_roles_identityId_identities_id_fk",
+          "tableFrom": "identities_roles",
+          "tableTo": "identities",
+          "columnsFrom": ["identityId"],
+          "columnsTo": ["id"],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "identities_roles_roleId_roles_id_fk": {
+          "name": "identities_roles_roleId_roles_id_fk",
+          "tableFrom": "identities_roles",
+          "tableTo": "roles",
+          "columnsFrom": ["roleId"],
+          "columnsTo": ["id"],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "identities_roles_identityId_roleId_pk": {
+          "name": "identities_roles_identityId_roleId_pk",
+          "columns": ["identityId", "roleId"]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.permissions_systems": {
+      "name": "permissions_systems",
+      "schema": "",
+      "columns": {
+        "permissionId": {
+          "name": "permissionId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "systemId": {
+          "name": "systemId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "permissions_systems_permissionId_permissions_id_fk": {
+          "name": "permissions_systems_permissionId_permissions_id_fk",
+          "tableFrom": "permissions_systems",
+          "tableTo": "permissions",
+          "columnsFrom": ["permissionId"],
+          "columnsTo": ["id"],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "permissions_systems_systemId_systems_id_fk": {
+          "name": "permissions_systems_systemId_systems_id_fk",
+          "tableFrom": "permissions_systems",
+          "tableTo": "systems",
+          "columnsFrom": ["systemId"],
+          "columnsTo": ["id"],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "permissions_systems_permissionId_systemId_pk": {
+          "name": "permissions_systems_permissionId_systemId_pk",
+          "columns": ["permissionId", "systemId"]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.permissions": {
+      "name": "permissions",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "permissions_name_unique": {
+          "name": "permissions_name_unique",
+          "nullsNotDistinct": false,
+          "columns": ["name"]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.roles_permissions": {
+      "name": "roles_permissions",
+      "schema": "",
+      "columns": {
+        "roleId": {
+          "name": "roleId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "permissionId": {
+          "name": "permissionId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "roles_permissions_roleId_roles_id_fk": {
+          "name": "roles_permissions_roleId_roles_id_fk",
+          "tableFrom": "roles_permissions",
+          "tableTo": "roles",
+          "columnsFrom": ["roleId"],
+          "columnsTo": ["id"],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "roles_permissions_permissionId_permissions_id_fk": {
+          "name": "roles_permissions_permissionId_permissions_id_fk",
+          "tableFrom": "roles_permissions",
+          "tableTo": "permissions",
+          "columnsFrom": ["permissionId"],
+          "columnsTo": ["id"],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "roles_permissions_roleId_permissionId_pk": {
+          "name": "roles_permissions_roleId_permissionId_pk",
+          "columns": ["roleId", "permissionId"]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.roles": {
+      "name": "roles",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "authentication_role_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "roles_name_unique": {
+          "name": "roles_name_unique",
+          "nullsNotDistinct": false,
+          "columns": ["name"]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.systems": {
+      "name": "systems",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "url": {
+          "name": "url",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "note": {
+          "name": "note",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "loginRequired": {
+          "name": "loginRequired",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "active": {
+          "name": "active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "systems_name_unique": {
+          "name": "systems_name_unique",
+          "nullsNotDistinct": false,
+          "columns": ["name"]
+        },
+        "systems_url_unique": {
+          "name": "systems_url_unique",
+          "nullsNotDistinct": false,
+          "columns": ["url"]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.approval_actions": {
+      "name": "approval_actions",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "curriculumId": {
+          "name": "curriculumId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "approvedBy": {
+          "name": "approvedBy",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "approvalStep": {
+          "name": "approvalStep",
+          "type": "curriculum_approval_step",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "agendaNumber": {
+          "name": "agendaNumber",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "isApproved": {
+          "name": "isApproved",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "meetingTitle": {
+          "name": "meetingTitle",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "remarks": {
+          "name": "remarks",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "attachmentUrls": {
+          "name": "attachmentUrls",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'{}'"
+        },
+        "meetingTime": {
+          "name": "meetingTime",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "meetingDate": {
+          "name": "meetingDate",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "approval_actions_curriculumId_curriculums_id_fk": {
+          "name": "approval_actions_curriculumId_curriculums_id_fk",
+          "tableFrom": "approval_actions",
+          "tableTo": "curriculums",
+          "columnsFrom": ["curriculumId"],
+          "columnsTo": ["id"],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.budget_estimates": {
+      "name": "budget_estimates",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "category": {
+          "name": "category",
+          "type": "curriculum_expense_category",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "itemName": {
+          "name": "itemName",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "estimatedCost": {
+          "name": "estimatedCost",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "curriculumId": {
+          "name": "curriculumId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "budget_estimates_curriculumId_curriculums_id_fk": {
+          "name": "budget_estimates_curriculumId_curriculums_id_fk",
+          "tableFrom": "budget_estimates",
+          "tableTo": "curriculums",
+          "columnsFrom": ["curriculumId"],
+          "columnsTo": ["id"],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.course_structures": {
+      "name": "course_structures",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "title": {
+          "name": "title",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "competencies": {
+          "name": "competencies",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "learningHours": {
+          "name": "learningHours",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "deliveryFormats": {
+          "name": "deliveryFormats",
+          "type": "varchar(255)[]",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'{}'"
+        },
+        "curriculumId": {
+          "name": "curriculumId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "course_structures_curriculumId_curriculums_id_fk": {
+          "name": "course_structures_curriculumId_curriculums_id_fk",
+          "tableFrom": "course_structures",
+          "tableTo": "curriculums",
+          "columnsFrom": ["curriculumId"],
+          "columnsTo": ["id"],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.curriculum_applications": {
+      "name": "curriculum_applications",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "minimumEnrollment": {
+          "name": "minimumEnrollment",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "courseFee": {
+          "name": "courseFee",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "qualificationRequirements": {
+          "name": "qualificationRequirements",
+          "type": "varchar(255)[]",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'{}'"
+        },
+        "additionalConditions": {
+          "name": "additionalConditions",
+          "type": "varchar(255)[]",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'{}'"
+        },
+        "attachmentUrl": {
+          "name": "attachmentUrl",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "curriculum_applications_id_curriculums_id_fk": {
+          "name": "curriculum_applications_id_curriculums_id_fk",
+          "tableFrom": "curriculum_applications",
+          "tableTo": "curriculums",
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.curriculum_general_info": {
+      "name": "curriculum_general_info",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "generalInfo": {
+          "name": "generalInfo",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "model": {
+          "name": "model",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "benefits": {
+          "name": "benefits",
+          "type": "varchar(255)[]",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'{}'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "curriculum_general_info_id_curriculums_id_fk": {
+          "name": "curriculum_general_info_id_curriculums_id_fk",
+          "tableFrom": "curriculum_general_info",
+          "tableTo": "curriculums",
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.curriculums": {
+      "name": "curriculums",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "objectives": {
+          "name": "objectives",
+          "type": "varchar(255)[]",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'{}'"
+        },
+        "content": {
+          "name": "content",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "requestedBy": {
+          "name": "requestedBy",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "curriculum_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'DRAFT'"
+        },
+        "currentStep": {
+          "name": "currentStep",
+          "type": "curriculum_approval_step",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rejectionNote": {
+          "name": "rejectionNote",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.learning_outcomes": {
+      "name": "learning_outcomes",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "outcome": {
+          "name": "outcome",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "teachingStrategy": {
+          "name": "teachingStrategy",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "assessmentStrategy": {
+          "name": "assessmentStrategy",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "curriculumId": {
+          "name": "curriculumId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "learning_outcomes_curriculumId_curriculums_id_fk": {
+          "name": "learning_outcomes_curriculumId_curriculums_id_fk",
+          "tableFrom": "learning_outcomes",
+          "tableTo": "curriculums",
+          "columnsFrom": ["curriculumId"],
+          "columnsTo": ["id"],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.faculties": {
+      "name": "faculties",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "shortName": {
+          "name": "shortName",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "parentId": {
+          "name": "parentId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "name": "description",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "faculties_parentId_faculties_id_fk": {
+          "name": "faculties_parentId_faculties_id_fk",
+          "tableFrom": "faculties",
+          "tableTo": "faculties",
+          "columnsFrom": ["parentId"],
+          "columnsTo": ["id"],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.personnel_educations": {
+      "name": "personnel_educations",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "personnelId": {
+          "name": "personnelId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "degree": {
+          "name": "degree",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "field": {
+          "name": "field",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "university": {
+          "name": "university",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "year": {
+          "name": "year",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "personnel_educations_personnelId_personnel_id_fk": {
+          "name": "personnel_educations_personnelId_personnel_id_fk",
+          "tableFrom": "personnel_educations",
+          "tableTo": "personnel",
+          "columnsFrom": ["personnelId"],
+          "columnsTo": ["id"],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.import_progress": {
+      "name": "import_progress",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar(255)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "label": {
+          "name": "label",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "total": {
+          "name": "total",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "processed": {
+          "name": "processed",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 0
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.personnel": {
+      "name": "personnel",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "personnelId": {
+          "name": "personnelId",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "phone": {
+          "name": "phone",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "firstname": {
+          "name": "firstname",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "lastname": {
+          "name": "lastname",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "academicPosition": {
+          "name": "academicPosition",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "highestEducation": {
+          "name": "highestEducation",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "programOrField": {
+          "name": "programOrField",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "university": {
+          "name": "university",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "graduationYear": {
+          "name": "graduationYear",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "facultyIds": {
+          "name": "facultyIds",
+          "type": "uuid[]",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'{}'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "personnel_personnelId_unique": {
+          "name": "personnel_personnelId_unique",
+          "nullsNotDistinct": false,
+          "columns": ["personnelId"]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.authentication_role_type": {
+      "name": "authentication_role_type",
+      "schema": "public",
+      "values": ["STUDENT", "PERSONNEL", "ADMIN"]
+    },
+    "public.curriculum_approval_step": {
+      "name": "curriculum_approval_step",
+      "schema": "public",
+      "values": ["UNDER_CONSIDERATION", "ACADEMIC_COMMITTEE", "ACADEMIC_COUNCIL", "UNIVERSITY_COUNCIL", "APPROVED"]
+    },
+    "public.curriculum_course_type": {
+      "name": "curriculum_course_type",
+      "schema": "public",
+      "values": ["NON_DEGREE", "DEGREE"]
+    },
+    "public.curriculum_expense_category": {
+      "name": "curriculum_expense_category",
+      "schema": "public",
+      "values": ["COMPENSATION", "EXPENSES", "MATERIAL"]
+    },
+    "public.curriculum_status": {
+      "name": "curriculum_status",
+      "schema": "public",
+      "values": ["DRAFT", "SUBMITTED", "IN_PROGRESS", "REJECTED", "APPROVED"]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

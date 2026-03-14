@@ -1,0 +1,17 @@
+import { CreateStudentCommand, GetStudentsQuery } from '../../application';
+import { AppContext } from '../context';
+import { Resolvers, Student } from '../generated';
+
+export const mutations: Resolvers<AppContext>['Mutation'] = {
+  createStudent: async (_args, { input }, ctx) => {
+    const result = await ctx.commandBus.send(new CreateStudentCommand(input));
+    return result;
+  },
+};
+export const queries: Resolvers<AppContext>['Query'] = {
+  students: async (_args, _params, ctx) => {
+    const result: Student[] = await ctx.queryBus.execute(new GetStudentsQuery());
+    return result;
+  },
+};
+export const fields: Resolvers<AppContext> = {};

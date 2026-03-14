@@ -1,0 +1,6 @@
+import { mergeTypeDefs } from '@graphql-tools/merge';
+
+import { typeDefs as commonSchema } from './common';
+import { schemaTypeDefs as studentSchemaTypeDefs } from './student';
+
+export const typeDefs = mergeTypeDefs([commonSchema, ...studentSchemaTypeDefs]);

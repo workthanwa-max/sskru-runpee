@@ -1,0 +1,46 @@
+[
+  {
+    "id": "a0000001-0000-0000-0000-000000000001",
+    "studentId": "25690001",
+    "firstname": "อดิศักดิ์",
+    "lastname": "ใจดี",
+    "phone": "081-222-3333",
+    "email": "adisak.j@sskru.ac.th",
+    "facultyId": "c1c29a7d-10a1-4a12-8f0e-5b6d1434e228",
+    "program": "วิศวกรรมซอฟต์แวร์",
+    "year": 1
+  },
+  {
+    "id": "a0000002-0000-0000-0000-000000000002",
+    "studentId": "25680002",
+    "firstname": "นารี",
+    "lastname": "พรหมมา",
+    "phone": "082-333-4444",
+    "email": "naree.p@sskru.ac.th",
+    "facultyId": "d1d1d1d1-d1d1-4d1d-ad1d-d1d1d1d1d1d1",
+    "program": "วิทยาการคอมพิวเตอร์",
+    "year": 2
+  },
+  {
+    "id": "a0000003-0000-0000-0000-000000000003",
+    "studentId": "25670003",
+    "firstname": "สมชาย",
+    "lastname": "สายสมร",
+    "phone": "083-444-5555",
+    "email": "somchai.s@sskru.ac.th",
+    "facultyId": "f3f3f3f3-f3f3-4f3f-af3f-f3f3f3f3f3f3",
+    "program": "การประถมศึกษา",
+    "year": 3
+  },
+  {
+    "id": "d4444444-4444-4444-4444-444444444444",
+    "studentId": "student04",
+    "firstname": "สมฤดี",
+    "lastname": "มีสุข",
+    "phone": "084-555-6666",
+    "email": "student04@sskru.ac.th",
+    "facultyId": "c1c29a7d-10a1-4a12-8f0e-5b6d1434e228",
+    "program": "วิศวกรรมซอฟต์แวร์",
+    "year": 4
+  }
+]

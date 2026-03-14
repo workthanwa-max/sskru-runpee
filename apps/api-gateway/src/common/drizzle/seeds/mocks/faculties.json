@@ -1,0 +1,58 @@
+[
+  {
+    "id": "84203eb1-2ff6-46cb-a369-0d55f4060c96",
+    "name": "คณะศิลปศาสตร์และวิทยาศาสตร์",
+    "shortName": "ศศ.วท.",
+    "parentId": null,
+    "description": "Liberal Arts and Science"
+  },
+  {
+    "id": "c1c29a7d-10a1-4a12-8f0e-5b6d1434e228",
+    "name": "สาขาวิชาวิศวกรรมซอฟต์แวร์",
+    "shortName": "วศ.บ.",
+    "parentId": "84203eb1-2ff6-46cb-a369-0d55f4060c96",
+    "description": "Software Engineering"
+  },
+  {
+    "id": "d1d1d1d1-d1d1-4d1d-ad1d-d1d1d1d1d1d1",
+    "name": "สาขาวิชาวิทยาการคอมพิวเตอร์",
+    "shortName": "วท.บ. (คิวเตอร์)",
+    "parentId": "84203eb1-2ff6-46cb-a369-0d55f4060c96",
+    "description": "Computer Science"
+  },
+  {
+    "id": "e2e2e2e2-e2e2-4e2e-ae2e-e2e2e2e2e2e2",
+    "name": "คณะครุศาสตร์",
+    "shortName": "ครุศาสตร์",
+    "parentId": null,
+    "description": "Education"
+  },
+  {
+    "id": "f3f3f3f3-f3f3-4f3f-af3f-f3f3f3f3f3f3",
+    "name": "สาขาวิชาการประถมศึกษา",
+    "shortName": "ค.บ.",
+    "parentId": "e2e2e2e2-e2e2-4e2e-ae2e-e2e2e2e2e2e2",
+    "description": "Elementary Education"
+  },
+  {
+    "id": "a4a4a4a4-a4a4-4a4a-aa4a-a4a4a4a4a4a4",
+    "name": "คณะบริหารธุรกิจและการบัญชี",
+    "shortName": "บธ.บ.",
+    "parentId": null,
+    "description": "Business Administration"
+  },
+  {
+    "id": "b5b5b5b5-b5b5-4b5b-ab5b-b5b5b5b5b5b5",
+    "name": "คณะพยาบาลศาสตร์",
+    "shortName": "พยาบาล",
+    "parentId": null,
+    "description": "Nursing"
+  },
+  {
+    "id": "c6c6c6c6-c6c6-4c6c-ac6c-c6c6c6c6c6c6",
+    "name": "คณะมนุษยศาสตร์และสังคมศาสตร์",
+    "shortName": "มส.",
+    "parentId": null,
+    "description": "Humanities and Social Sciences"
+  }
+]

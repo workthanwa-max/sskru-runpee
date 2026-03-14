@@ -1,0 +1,20 @@
+{
+  "name": "website",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/website",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project website --web",
+  "targets": {
+    "docker-build": {
+      "dependsOn": ["build"],
+      "args": ["registry", "tag"],
+      "command": "docker build -f apps/website/Dockerfile . -t website",
+      "configurations": {
+        "staging": {
+          "command": "docker buildx build --platform linux/amd64 --output \"type=image,push=true\" --tag {args.registry}/website:latest --tag {args.registry}/website:{args.tag} --build-arg APP_VERSION={args.tag} --file apps/website/Dockerfile ."
+        }
+      }
+    }
+  }
+}

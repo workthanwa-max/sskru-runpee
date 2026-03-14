@@ -1,0 +1,13 @@
+import { BaseDrizzleRepository } from '@sskru/core';
+import { injectable } from 'inversify';
+import { students } from '../../domain/entities/tables';
+import { Student } from '../../domain/interfaces';
+import { IStudentRepository } from '../../domain/repositories';
+import { dbClient, DBClientType } from '../read-storage/drizzle';
+
+@injectable()
+export class StudentRepository extends BaseDrizzleRepository<Student, DBClientType> implements IStudentRepository {
+  constructor() {
+    super(dbClient, students);
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "onion-architecture": {
+      "factory": "./src/generators/onion-architecture/generator",
+      "schema": "./src/generators/onion-architecture/schema.json",
+      "description": "onion-architecture generator"
+    }
+  }
+}

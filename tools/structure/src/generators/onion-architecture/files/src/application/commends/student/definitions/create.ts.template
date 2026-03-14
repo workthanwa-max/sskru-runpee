@@ -1,0 +1,12 @@
+import { Command } from '@sskru/core';
+import { InferInsertModel } from 'drizzle-orm';
+import { students } from '../../../../domain/entities/tables';
+
+export type CreateStudentInput = InferInsertModel<typeof students>;
+
+export class CreateStudentCommand extends Command {
+  public readonly guid: string;
+  constructor(public readonly input: CreateStudentInput, guid?: string) {
+    super(guid);
+  }
+}

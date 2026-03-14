@@ -1,0 +1,9 @@
+{
+  "executors": {
+    "application": {
+      "implementation": "./src/executor/application/executor",
+      "schema": "./src/executor/application/schema.json",
+      "description": "application executor"
+    }
+  }
+}

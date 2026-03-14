@@ -1,0 +1,68 @@
+{
+  "name": "api-gateway",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/api-gateway/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "api-gateway:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "api-gateway:build:development"
+        },
+        "production": {
+          "buildTarget": "api-gateway:build:production"
+        }
+      }
+    },
+    "db:generate": {
+      "executor": "nx:run-commands",
+      "defaultConfiguration": "local",
+      "options": {
+        "command": "drizzle-kit generate --config=./src/common/drizzle/config.ts",
+        "cwd": "apps/api-gateway"
+      },
+      "configurations": {
+        "local": {}
+      }
+    },
+    "db:migrate": {
+      "executor": "nx:run-commands",
+      "metadata": {
+        "description": "Make sure the database name 'oass' is created"
+      },
+      "defaultConfiguration": "local",
+      "options": {
+        "command": "drizzle-kit migrate --config=./src/common/drizzle/config.ts",
+        "cwd": "apps/api-gateway"
+      },
+      "configurations": {
+        "local": {}
+      }
+    },
+    "db:seed": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "ts-node --project tsconfig.app.json ./src/common/drizzle/seeds",
+        "cwd": "apps/api-gateway"
+      }
+    },
+    "docker-build": {
+      "dependsOn": ["build"],
+      "args": ["registry", "tag"],
+      "command": "docker build -f apps/api-gateway/Dockerfile . -t api-gateway",
+      "configurations": {
+        "staging": {
+          "command": "docker buildx build --platform linux/amd64 --output \"type=image,push=true\" --tag {args.registry}/api-gateway:latest --tag {args.registry}/api-gateway:{args.tag} --build-arg APP_VERSION={args.tag} --file apps/api-gateway/Dockerfile ."
+        }
+      }
+    }
+  }
+}

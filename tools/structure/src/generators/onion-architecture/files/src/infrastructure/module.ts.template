@@ -1,0 +1,9 @@
+import { AsyncContainerModule, interfaces } from 'inversify';
+
+import { IStudentRepository } from '../domain/repositories';
+import { TYPES } from '../types';
+import { StudentRepository } from './repositories/StudentRepository';
+
+export const infrastructureModule = new AsyncContainerModule(async (bind: interfaces.Bind) => {
+  bind<IStudentRepository>(TYPES.StudentRepository).to(StudentRepository).inSingletonScope();
+});

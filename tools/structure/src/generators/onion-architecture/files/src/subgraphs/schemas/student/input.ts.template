@@ -1,0 +1,45 @@
+export const inputTypeDefs = `#graphql
+    input CreateStudentInput {
+        """
+        รหัสนักศึกษา
+        """
+        studentId: String!
+        """
+        รหัสประจำตัวประชาชน
+        """
+        personnelId: String!
+        """
+        คำนำหน้า
+        """
+        title: String!
+        """
+        ชื่อ
+        """
+        firstname: String!
+        """
+        นามสกุล
+        """
+        lastname: String!
+        """
+        ชื่อ (ภาษาอังกฤษ)
+        """
+        firstnameEn: String!
+        """
+        นามสกุล (ภาษาอังกฤษ)
+        """
+        lastnameEn: String!
+        """
+        หลักสูตร
+        - eg. วิทยาศาสตรบัณฑิต (วิศวกรรมซอฟต์แวร์)
+        """
+        course: String!
+        """
+        วุฒิเดิม
+        """
+        degree: String
+        """
+        วันที่สำเร็จการศึกษา
+        """
+        graduationDate: String
+    }
+`;

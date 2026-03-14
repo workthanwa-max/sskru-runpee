@@ -1,0 +1,14 @@
+import { drizzle } from 'drizzle-orm/postgres-js';
+import { reset } from 'drizzle-seed';
+import * as schema from '../../../../domain/entities/tables';
+import { DB_URL } from '../config';
+async function main() {
+  const db = drizzle(DB_URL);
+  await reset(db, schema);
+}
+main()
+  .then(() => {
+    console.log('Reset db completed');
+    process.exit(0);
+  })
+  .catch(console.error);

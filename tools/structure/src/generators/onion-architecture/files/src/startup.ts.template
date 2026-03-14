@@ -1,0 +1,32 @@
+import {
+  TYPES as G_TYPES,
+  ICommand,
+  ICommandBus,
+  ICommandHandler,
+  IQuery,
+  IQueryBus,
+  IQueryHandler,
+} from '@sskru/core';
+import { Container } from 'inversify';
+
+import { applicationModule } from './application/module';
+import { infrastructureModule } from './infrastructure/module';
+
+const initialise = async (container: Container) => {
+  await container.loadAsync(infrastructureModule);
+  await container.loadAsync(applicationModule);
+
+  const commandBus = container.get<ICommandBus>(G_TYPES.CommandBus);
+  container.getAll<ICommandHandler<ICommand>>(G_TYPES.CommandHandler).forEach((handler: ICommandHandler<ICommand>) => {
+    commandBus.registerHandler(handler);
+  });
+
+  const queryBus = container.get<IQueryBus>(G_TYPES.QueryBus);
+  container.getAll<IQueryHandler<IQuery>>(G_TYPES.QueryHandler).forEach((handler: IQueryHandler<IQuery>) => {
+    queryBus.registerHandler(handler);
+  });
+
+  return container;
+};
+
+export { initialise };

@@ -1,0 +1,8 @@
+import { TYPES as G_TYPES, IQueryHandler } from '@sskru/core';
+import { interfaces } from 'inversify';
+import { GetStudentsQuery } from './student/definitions/list';
+import { GetStudentsQueryHandler } from './student/handlers/list.handler';
+
+export const configures = (bind: interfaces.Bind) => {
+  bind<IQueryHandler<GetStudentsQuery>>(G_TYPES.QueryHandler).to(GetStudentsQueryHandler);
+};

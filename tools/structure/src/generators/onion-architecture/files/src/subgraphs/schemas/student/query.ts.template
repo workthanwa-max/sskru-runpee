@@ -1,0 +1,6 @@
+export const queryTypeDefs = `#graphql
+    type Query {
+        students: [Student!]
+        student: Student
+    }
+`;

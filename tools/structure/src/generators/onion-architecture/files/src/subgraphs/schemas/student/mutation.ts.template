@@ -1,0 +1,5 @@
+export const mutationTypeDefs = `#graphql
+    type Mutation {
+        createStudent(input: CreateStudentInput!): OperationCompleted!
+    }
+`;
