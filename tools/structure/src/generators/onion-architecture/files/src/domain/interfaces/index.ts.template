@@ -1,4 +1,0 @@
-import { InferSelectModel } from 'drizzle-orm';
-import { students } from '../entities/tables';
-
-export type Student = InferSelectModel<typeof students>;

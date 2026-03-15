@@ -1,5 +1,0 @@
-import { IQuery } from '@sskru/core';
-
-export class GetStudentsQuery implements IQuery {
-  constructor(public readonly permissionId?: string) {}
-}

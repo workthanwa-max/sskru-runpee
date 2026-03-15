@@ -1,9 +1,0 @@
-import { Command } from '@sskru/core';
-import { CreateStudentInput } from './create';
-
-export interface UpdateStudentInput extends Partial<CreateStudentInput> {}
-export class UpdateStudentCommand extends Command {
-  constructor(public readonly guid: string, public readonly input: UpdateStudentInput) {
-    super(guid);
-  }
-}

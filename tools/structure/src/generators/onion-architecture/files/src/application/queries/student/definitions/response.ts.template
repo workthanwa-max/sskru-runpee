@@ -1,3 +1,0 @@
-import { Student } from '../../../../domain/interfaces';
-
-export type StudentQueryResponse = Readonly<Student>;

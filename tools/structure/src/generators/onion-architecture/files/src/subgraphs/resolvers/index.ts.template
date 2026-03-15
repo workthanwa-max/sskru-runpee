@@ -1,8 +1,0 @@
-import { Resolvers } from '../generated';
-import { fields as studentFields, mutations as studentMutation, queries as studentQuery } from './student';
-
-export const resolvers: Resolvers = {
-  ...studentFields,
-  Query: { ...studentQuery },
-  Mutation: { ...studentMutation },
-};

@@ -17,16 +17,7 @@
     "resolveJsonModule": true,
     "strictNullChecks": true,
     "baseUrl": ".",
-    "paths": {
-      "@sskru/auth": ["libs/auth/src/index.ts"],
-      "@sskru/core": ["libs/core/src/index.ts"],
-      "@sskru/curriculum": ["libs/curriculum/src/index.ts"],
-      "@sskru/export-definition": ["tools/export-definition/src/index.ts"],
-      "@sskru/faculty": ["libs/faculty/src/index.ts"],
-      "@sskru/personnel": ["libs/personnel/src/index.ts"],
-      "@sskru/structure-generator": ["tools/structure/src/index.ts"],
-      "@sskru/student": ["libs/student/src/index.ts"]
-    }
+    "paths": {}
   },
   "exclude": ["node_modules", "tmp"]
 }

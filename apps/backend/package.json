@@ -1,0 +1,17 @@
+{
+  "name": "backend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "ts-node-dev -r tsconfig-paths/register -r dotenv/config --respawn --transpile-only --project tsconfig.app.json src/main.ts",
+    "build": "nest build",
+    "start": "node -r tsconfig-paths/register -r dotenv/config dist/main.js",
+    "db:generate": "drizzle-kit generate --config=./src/common/drizzle/config.ts",
+    "db:migrate": "drizzle-kit migrate --config=./src/common/drizzle/config.ts",
+    "db:seed": "ts-node -r tsconfig-paths/register -r dotenv/config --project tsconfig.app.json ./src/common/drizzle/seeds"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.0.2",
+    "@nestjs/core": "^10.0.2"
+  }
+}
