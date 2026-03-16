@@ -17,8 +17,8 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
     return gqlReq;
   }
 
-  canActivate(context: ExecutionContext) {
-    return super.canActivate(context);
+  canActivate(context: ExecutionContext): boolean | Promise<boolean> | import('rxjs').Observable<boolean> {
+    return super.canActivate(context) as any;
   }
 
   handleRequest<T = Identity>(err: any, user: any): T {

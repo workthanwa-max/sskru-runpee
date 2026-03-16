@@ -3,7 +3,7 @@ import { AuthModule } from 'src/auth/auth.module';
 import { CurriculumController } from './curriculum.controller';
 import { CurriculumService } from './services/curriculum.service';
 import { CurriculumListener } from 'src/listeners/curriculum.listener';
-import { CurriculumRepository } from 'src/repositories/curriculum.repository';
+import { CurriculumRepository } from './repositories/curriculum.repository';
 import { DrizzleModule } from 'src/common/drizzle/module';
 
 @Module({

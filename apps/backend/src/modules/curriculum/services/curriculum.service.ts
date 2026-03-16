@@ -7,8 +7,8 @@ import { DBClientType, schema, type Curriculum } from 'src/common/drizzle';
 import { NotFoundError } from 'src/common/errors';
 import { RequestSubmitted, ApprovalActionSubmitted } from 'src/events/curriculum.event';
 import { CurriculumReqCurriculumSubmitInput, CurriculumReqGeneralSubmitInput, CurriculumReqBudgetSubmitInput, SubmitCourseImplementationInput } from '../dto/curriculum.dto';
-import { CurriculumRepository } from 'src/repositories/curriculum.repository';
-import { CurriculumDomain } from 'src/domain/curriculum.domain';
+import { CurriculumRepository } from '../repositories/curriculum.repository';
+import { CurriculumDomain } from '../domain/curriculum.domain';
 import { FileStorageService } from 'src/common/storage/file-storage.service';
 
 // Curriculum Service

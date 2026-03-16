@@ -20,6 +20,7 @@ A clean and simple management system for SSKRU, built with a modern tech stack a
 - **Frontend**: `Next.js 14` (App Router) + `Mantine UI`
 - **Backend**: `NestJS` (Standard Service-Repository Pattern)
 - **Database**: `PostgreSQL 16`
+- **Storage**: `Local Disk` (เก็บไฟล์ไว้ที่ `apps/backend/uploads`)
 - **Package Manager**: `pnpm` (Workspaces)
 
 ---
